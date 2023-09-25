@@ -28,6 +28,9 @@ public class Quilt {
 	@Column(columnDefinition="decimal (11,2) not null")
 	private double length = 0;
 	
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double area = 0;
+	
 	@Column(columnDefinition = "boolean", nullable=false)
 	private boolean pantograph = false;
 	
@@ -76,10 +79,10 @@ public class Quilt {
 	@Column(length=400, nullable=false)
 	private String embroideryDescription = "";
 	
-	@Column(columnDefinition = "DATETIME (2)")
+	@Column(columnDefinition = "DATETIME", nullable=true)
 	private LocalDateTime createdDate = LocalDateTime.now();
 	
-	@Column(columnDefinition = "DATETIME (2)", nullable=true)
+	@Column(columnDefinition = "DATETIME", nullable=true)
 	private LocalDateTime completionDate = createdDate.plus(6, ChronoUnit.WEEKS);
 	
 	@Column(columnDefinition = "boolean", nullable=false)
@@ -440,6 +443,15 @@ public class Quilt {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
+	public double getArea() {
+		return area;
+	}
+
+	public void setArea(double area) {
+		this.area = area;
+	}
+	
 	
 	
 }

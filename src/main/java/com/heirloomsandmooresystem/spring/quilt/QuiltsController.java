@@ -43,7 +43,8 @@ public class QuiltsController {
 		return new ResponseEntity<Quilt>(qui.get(), HttpStatus.OK);
 	}
 	
-	
+
+		
 	
 	//Post
 		@PostMapping
@@ -74,4 +75,14 @@ public class QuiltsController {
 			quiRepo.deleteById(id);
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
+		
+		//other methods
+		
+		private void findAreaTotal(@PathVariable Quilt qui) {
+		qui.setArea(qui.getWidth() * qui.getLength());
+		}
+		
+		
+		
+	
 }
