@@ -45,6 +45,10 @@ public class Client {
 	@Column(columnDefinition = "boolean", nullable=false)
 	private boolean isAdmin = false;
 	
+	@Column(columnDefinition="decimal (11,5) not null")
+	private double Sales = 0;
+	
+	
 	
 	//getters and setters
 	public int getId() {
@@ -112,6 +116,12 @@ public class Client {
 	}
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+	public double getSales() {
+		return Sales;
+	}
+	public void setSales(double sales) {
+		Sales = sales;
 	}
 	
 	

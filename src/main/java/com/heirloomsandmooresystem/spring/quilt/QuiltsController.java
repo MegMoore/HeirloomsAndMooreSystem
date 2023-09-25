@@ -1,4 +1,4 @@
-package com.heirloomsandmooresystem.spring.pantographs;
+package com.heirloomsandmooresystem.spring.quilt;
 
 import java.util.Optional;
 
@@ -17,61 +17,61 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/pantographs")
-public class PantographsController {
+@RequestMapping("/api/quilts")
+public class QuiltsController {
 
 	@Autowired
-	private PantographRepository panRepo;
+	private QuiltRepository quiRepo;
 	
 	//Get All
 	@GetMapping
-	public ResponseEntity<Iterable<Pantograph>> getPantograph(){
-		Iterable<Pantograph> pant= panRepo.findAll();
-		return new ResponseEntity<Iterable<Pantograph>>(pant, HttpStatus.OK);
+	public ResponseEntity<Iterable<Quilt>> getQuilt(){
+		Iterable<Quilt> quil= quiRepo.findAll();
+		return new ResponseEntity<Iterable<Quilt>>(quil, HttpStatus.OK);
 	}
 	//Get By Id
 	@GetMapping("{id}")//get by id
-	public ResponseEntity<Pantograph> getPantograph(@PathVariable int id){
+	public ResponseEntity<Quilt> getQuilt(@PathVariable int id){
 		if(id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		
 	}
-		Optional<Pantograph> pan = panRepo.findById(id);
-		if(pan.isEmpty()) {
+		Optional<Quilt> qui = quiRepo.findById(id);
+		if(qui.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Pantograph>(pan.get(), HttpStatus.OK);
+		return new ResponseEntity<Quilt>(qui.get(), HttpStatus.OK);
 	}
 	
 	
 	
 	//Post
 		@PostMapping
-		public ResponseEntity<Pantograph> postPantograph(@RequestBody Pantograph pan){
-			if(pan.getId() != 0) {
+		public ResponseEntity<Quilt> postQuilt(@RequestBody Quilt qui){
+			if(qui.getId() != 0) {
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
-			panRepo.save(pan);
-			return new ResponseEntity<Pantograph>(pan, HttpStatus.CREATED);
+			quiRepo.save(qui);
+			return new ResponseEntity<Quilt>(qui, HttpStatus.CREATED);
 		}
 		
 		//Put
 		@PutMapping("{id}")
-		public ResponseEntity putPantograph(@PathVariable int id, @RequestBody Pantograph pan) {
-			if(pan.getId() != id) {
+		public ResponseEntity putQuilt(@PathVariable int id, @RequestBody Quilt qui) {
+			if(qui.getId() != id) {
 				return new ResponseEntity(HttpStatus.BAD_REQUEST);
 			}
-			panRepo.save(pan);
+			quiRepo.save(qui);
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 		
 		//Delete
 		@DeleteMapping("{id}")
-		public ResponseEntity deletePantograph(@PathVariable int id) {
+		public ResponseEntity deleteQuilt(@PathVariable int id) {
 			if(id <= 0) {
 				return new ResponseEntity(HttpStatus.BAD_REQUEST);
 			}
-			panRepo.deleteById(id);
+			quiRepo.deleteById(id);
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 }

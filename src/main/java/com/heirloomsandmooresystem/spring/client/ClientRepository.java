@@ -7,9 +7,9 @@ import org.springframework.data.repository.CrudRepository;
 public interface ClientRepository extends CrudRepository<Client, Integer> {
 	
 	
-	Optional<Client> findClientByFirstNameAndLastName(String firstName, String lastName);
+	Iterable<Client> getClientByFirstNameAndLastName(String firstName, String lastName);
 
-	Optional<Client> findClientByLastName(String lastName);
+	Iterable<Client> getClientByLastName(String lastName);
 
-	Optional<Client> findClientByUsername(String username);
+	Optional<Client> getClientByUsername(String username);
 }

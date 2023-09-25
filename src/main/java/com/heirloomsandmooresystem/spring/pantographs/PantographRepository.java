@@ -1,5 +1,7 @@
 package com.heirloomsandmooresystem.spring.pantographs;
 
-public interface PantographRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface PantographRepository extends CrudRepository<Pantograph, Integer>{
 
 }

@@ -31,7 +31,7 @@ public class ClientsController {
 	}
 	//Get By Id
 	@GetMapping("{id}")//get by id
-	public ResponseEntity<Client> getClient(@PathVariable int id){
+	public ResponseEntity<Client> getById(@PathVariable int id){
 		if(id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		
@@ -44,9 +44,9 @@ public class ClientsController {
 	}
 	
 	//Get By username
-	@GetMapping("{username}")//get client by username 
-	public ResponseEntity<Client> getUserByUsername(@PathVariable String username){
-		Optional<Client> cli = cliRepo.findClientByUsername(username);
+	@GetMapping("username/{username}")//get client by username 
+	public ResponseEntity<Client> getClientByUsername(@PathVariable String username){
+		Optional<Client> cli = cliRepo.getClientByUsername(username);
 		if(cli.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -56,23 +56,19 @@ public class ClientsController {
 	
 	//Get By lastname
 		@GetMapping("lastname/{lastname}")//get client by lastname
-		public ResponseEntity<Client> getUserByLastName(@PathVariable String lastName){
-			Optional<Client> cli = cliRepo.findClientByLastName(lastName);
-			if(cli.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
-			return new ResponseEntity<Client>(cli.get(), HttpStatus.OK);
+		public ResponseEntity<Iterable<Client>> getClientByLastName(@PathVariable String lastname){
+			Iterable<Client> cli = cliRepo.getClientByLastName(lastname);
+			
+			return new ResponseEntity<Iterable<Client>>(cli, HttpStatus.OK);
 		
 		}
 	
 	//Get By firstname lastname
 		@GetMapping("{firstname}/{lastname}")//get client by firstname and lastname
-		public ResponseEntity<Client> getClientByFirstNameAndLastName(@PathVariable String firstName, @PathVariable String lastName){
-			Optional<Client> cli = cliRepo.findClientByFirstNameAndLastName(firstName, lastName);
-			if(cli.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
-			return new ResponseEntity<Client>(cli.get(), HttpStatus.OK);
+		public ResponseEntity<Iterable<Client>> getByClientFirstNameAndLastName(@PathVariable String firstname, @PathVariable String lastname){
+			Iterable<Client> cli = cliRepo.getClientByFirstNameAndLastName(firstname, lastname);
+			
+			return new ResponseEntity<Iterable<Client>>(cli, HttpStatus.OK);
 			}
 	
 	//Post
