@@ -2,6 +2,7 @@ package com.heirloomsandmooresystem.spring.quilt;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+//import com.heirloomsandmooresystem.spring.client.Client;
+//import com.heirloomsandmooresystem.spring.client.ClientRepository;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/quilts")
@@ -22,6 +25,7 @@ public class QuiltsController {
 
 	@Autowired
 	private QuiltRepository quiRepo;
+	//private ClientRepository cliRepo;
 	
 	//Get All
 	@GetMapping
@@ -54,7 +58,7 @@ public class QuiltsController {
 	
 	//Post
 		@PostMapping
-		public ResponseEntity<Quilt> postQuilt(@RequestBody Quilt qui){
+		public ResponseEntity<Quilt> postQuilt(@RequestBody Quilt qui)  {
 			if(qui.getId() != 0) {
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
@@ -66,7 +70,7 @@ public class QuiltsController {
 		
 		//Put
 		@PutMapping("{id}")
-		public ResponseEntity putQuilt(@PathVariable int id, @RequestBody Quilt qui) {
+		public ResponseEntity putQuilt(@PathVariable int id, @RequestBody Quilt qui)  {
 			if(qui.getId() != id) {
 				return new ResponseEntity(HttpStatus.BAD_REQUEST);
 			}
@@ -213,15 +217,16 @@ public class QuiltsController {
 	        	qui.setTotalDue(qui.getTotalDue() + qui.getTipAmount());
 	        }
 	        
+	      //Points tracker
+	       //***********************working on point calculator*************************
+			if(qui.getQuiltingCost() > 0) {
+				qui.getClient().setPoints(qui.getQuiltingCost());
+			}
 	        
-	        
-				return qui;
+			return qui;
 				
 	}
-		private double round(double bindingCost, int i) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
+		
 		
 		
 		

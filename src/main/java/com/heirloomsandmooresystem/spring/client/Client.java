@@ -46,8 +46,10 @@ public class Client {
 	private boolean isAdmin = false;
 	
 	@Column(columnDefinition="decimal (11,5) not null")
-	private double Sales = 0;
+	private double sales = 0;
 	
+	@Column(columnDefinition="decimal (11,5) not null")
+	private double points = 0;
 	
 	
 	//getters and setters
@@ -118,10 +120,16 @@ public class Client {
 		this.isAdmin = isAdmin;
 	}
 	public double getSales() {
-		return Sales;
+		return sales;
 	}
 	public void setSales(double sales) {
-		Sales = sales;
+		sales = sales;
+	}
+	public double getPoints() {
+		return points;
+	}
+	public void setPoints(double points) {
+		this.points = points;
 	}
 	
 	

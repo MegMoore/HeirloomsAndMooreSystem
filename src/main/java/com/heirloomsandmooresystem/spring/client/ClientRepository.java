@@ -14,4 +14,6 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
 	Optional<Client> getClientByUsername(String username);
 
 	Iterable<Client> getClientByFirstName(String firstname);
+
+	Optional<Client> findById(int Id);
 }
