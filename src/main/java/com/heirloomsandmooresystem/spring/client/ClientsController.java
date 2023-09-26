@@ -62,6 +62,7 @@ public class ClientsController {
 			return new ResponseEntity<Iterable<Client>>(cli, HttpStatus.OK);
 		
 		}
+		
 	
 	//Get By firstname lastname
 		@GetMapping("{firstname}/{lastname}")//get client by firstname and lastname

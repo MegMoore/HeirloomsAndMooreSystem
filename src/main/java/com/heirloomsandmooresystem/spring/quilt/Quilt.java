@@ -28,53 +28,62 @@ public class Quilt {
 	@Column(columnDefinition="decimal (11,2) not null")
 	private double length = 0;
 	
+	@Column(length=20, nullable=false)
+	private String size = "";
+	
 	@Column(columnDefinition="decimal (11,2) not null")
 	private double area = 0;
 	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean pantograph = false;
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double parimeter = 0;
 	
 	@Column(columnDefinition="decimal (11,6) not null")
 	private double pantographPrice = 0.002;
 	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean quilting = false;
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double pantographCost = 0;
 	
 	@Column(columnDefinition="decimal (11,6) not null")
 	private double quiltingPrice = 0.002;
 	
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double quiltingCost = 0;
+	
 	@Column(length=400, nullable=false)
 	private String quiltingDescription = "";
-	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean binding = false;
 	
 	@Column(columnDefinition="decimal (11,6) not null")
 	private double bindingPrice = 0;
 	
 	@Column(columnDefinition="decimal (11,2) not null")
-	private double bindingAmountNeeded = 0;
+	private double bindingCost = 0;
 	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean backing = false;
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double bindingAmountNeeded = 0;
 	
 	@Column(columnDefinition="decimal (11,2) not null")
 	private double backingPrice = 0;
 	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean batting = false;
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double backingCost = 0;
+	
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double backingAmountNeeded = 0;
 	
 	@Column(columnDefinition="decimal (11,2) not null")
 	private double battingPrice = 0;
 	
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double battingCost = 0;
+	
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double battingAmountNeeded = 0;
+	
 	@Column(length=20, nullable=false)
 	private String threadColor = "";
 	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean embroidery = false;
-	
 	@Column(columnDefinition="decimal (11,2) not null")
-	private double embroideryPrice = 0;
+	private double embroideryCost = 0;
 	
 	@Column(length=400, nullable=false)
 	private String embroideryDescription = "";
@@ -85,25 +94,19 @@ public class Quilt {
 	@Column(columnDefinition = "DATETIME", nullable=true)
 	private LocalDateTime completionDate = createdDate.plus(6, ChronoUnit.WEEKS);
 	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean referral = false;
-	
 	@Column(length=50, nullable=false)
 	private String referralClient = "";
-	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean discount = false;
 	
 	@Column(columnDefinition="decimal (11,2) not null")
 	private double discountPrice = 0;
 	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean rewards = false;
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double discountAmount = 0;
 	
 	@Column(columnDefinition="decimal (11,2) not null")
-	private double rewardAmount = 20.00;
+	private double rewardAmount = 0;
 	
-	@Column(length=50, nullable=false)
+	@Column(length=50, nullable=true)
 	private String status = "New";
 	
 	@Column(length=255, nullable=true)
@@ -121,23 +124,25 @@ public class Quilt {
 	@Column(columnDefinition="decimal (11,5) not null")
 	private double tax = 0.075;
 	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean downpayment = false;
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double taxAmount = 0;
+	
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double downpayment = 0;
 	
 	@Column(columnDefinition="decimal (11,2) not null")
 	private double downpaymentAmount = 0;
 	
-	@Column(columnDefinition = "boolean", nullable=false)
-	private boolean tip = false;
+	@Column(columnDefinition="decimal (11,2) not null")
+	private double tip = 0;
 	
-
 	@Column(columnDefinition="decimal (11,2) not null")
 	private double tipAmount = 0;
 	
 	@ManyToOne(optional=false)
 	@JoinColumn(name="clientId")
 	private Client client;
-	
+
 	//getters and setters
 
 	public int getId() {
@@ -164,12 +169,12 @@ public class Quilt {
 		this.length = length;
 	}
 
-	public boolean isPantograph() {
-		return pantograph;
+	public double getArea() {
+		return area;
 	}
 
-	public void setPantograph(boolean pantograph) {
-		this.pantograph = pantograph;
+	public void setArea(double area) {
+		this.area = area;
 	}
 
 	public double getPantographPrice() {
@@ -180,12 +185,12 @@ public class Quilt {
 		this.pantographPrice = pantographPrice;
 	}
 
-	public boolean isQuilting() {
-		return quilting;
+	public double getPantographCost() {
+		return pantographCost;
 	}
 
-	public void setQuilting(boolean quilting) {
-		this.quilting = quilting;
+	public void setPantographCost(double pantographCost) {
+		this.pantographCost = pantographCost;
 	}
 
 	public double getQuiltingPrice() {
@@ -196,20 +201,20 @@ public class Quilt {
 		this.quiltingPrice = quiltingPrice;
 	}
 
+	public double getQuiltingCost() {
+		return quiltingCost;
+	}
+
+	public void setQuiltingCost(double quiltingCost) {
+		this.quiltingCost = quiltingCost;
+	}
+
 	public String getQuiltingDescription() {
 		return quiltingDescription;
 	}
 
 	public void setQuiltingDescription(String quiltingDescription) {
 		this.quiltingDescription = quiltingDescription;
-	}
-
-	public boolean isBinding() {
-		return binding;
-	}
-
-	public void setBinding(boolean binding) {
-		this.binding = binding;
 	}
 
 	public double getBindingPrice() {
@@ -220,20 +225,20 @@ public class Quilt {
 		this.bindingPrice = bindingPrice;
 	}
 
+	public double getBindingCost() {
+		return bindingCost;
+	}
+
+	public void setBindingCost(double bindingCost) {
+		this.bindingCost = bindingCost;
+	}
+
 	public double getBindingAmountNeeded() {
 		return bindingAmountNeeded;
 	}
 
 	public void setBindingAmountNeeded(double bindingAmountNeeded) {
 		this.bindingAmountNeeded = bindingAmountNeeded;
-	}
-
-	public boolean isBacking() {
-		return backing;
-	}
-
-	public void setBacking(boolean backing) {
-		this.backing = backing;
 	}
 
 	public double getBackingPrice() {
@@ -244,12 +249,12 @@ public class Quilt {
 		this.backingPrice = backingPrice;
 	}
 
-	public boolean isBatting() {
-		return batting;
+	public double getBackingCost() {
+		return backingCost;
 	}
 
-	public void setBatting(boolean batting) {
-		this.batting = batting;
+	public void setBackingCost(double backingCost) {
+		this.backingCost = backingCost;
 	}
 
 	public double getBattingPrice() {
@@ -260,6 +265,14 @@ public class Quilt {
 		this.battingPrice = battingPrice;
 	}
 
+	public double getBattingCost() {
+		return battingCost;
+	}
+
+	public void setBattingCost(double battingCost) {
+		this.battingCost = battingCost;
+	}
+
 	public String getThreadColor() {
 		return threadColor;
 	}
@@ -268,20 +281,12 @@ public class Quilt {
 		this.threadColor = threadColor;
 	}
 
-	public boolean isEmbroidery() {
-		return embroidery;
+	public double getEmbroideryCost() {
+		return embroideryCost;
 	}
 
-	public void setEmbroidery(boolean embroidery) {
-		this.embroidery = embroidery;
-	}
-
-	public double getEmbroideryPrice() {
-		return embroideryPrice;
-	}
-
-	public void setEmbroideryPrice(double embroideryPrice) {
-		this.embroideryPrice = embroideryPrice;
+	public void setEmbroideryCost(double embroideryCost) {
+		this.embroideryCost = embroideryCost;
 	}
 
 	public String getEmbroideryDescription() {
@@ -308,14 +313,6 @@ public class Quilt {
 		this.completionDate = completionDate;
 	}
 
-	public boolean isReferral() {
-		return referral;
-	}
-
-	public void setReferral(boolean referral) {
-		this.referral = referral;
-	}
-
 	public String getReferralClient() {
 		return referralClient;
 	}
@@ -324,28 +321,12 @@ public class Quilt {
 		this.referralClient = referralClient;
 	}
 
-	public boolean isDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(boolean discount) {
-		this.discount = discount;
-	}
-
 	public double getDiscountPrice() {
 		return discountPrice;
 	}
 
 	public void setDiscountPrice(double discountPrice) {
 		this.discountPrice = discountPrice;
-	}
-
-	public boolean isRewards() {
-		return rewards;
-	}
-
-	public void setRewards(boolean rewards) {
-		this.rewards = rewards;
 	}
 
 	public double getRewardAmount() {
@@ -404,28 +385,12 @@ public class Quilt {
 		this.tax = tax;
 	}
 
-	public boolean isDownpayment() {
-		return downpayment;
-	}
-
-	public void setDownpayment(boolean downpayment) {
-		this.downpayment = downpayment;
-	}
-
 	public double getDownpaymentAmount() {
 		return downpaymentAmount;
 	}
 
 	public void setDownpaymentAmount(double downpaymentAmount) {
 		this.downpaymentAmount = downpaymentAmount;
-	}
-
-	public boolean isTip() {
-		return tip;
-	}
-
-	public void setTip(boolean tip) {
-		this.tip = tip;
 	}
 
 	public double getTipAmount() {
@@ -444,14 +409,71 @@ public class Quilt {
 		this.client = client;
 	}
 
-	public double getArea() {
-		return area;
+	public double getParimeter() {
+		return parimeter;
 	}
 
-	public void setArea(double area) {
-		this.area = area;
+	public void setParimeter(double parimeter) {
+		this.parimeter = parimeter;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public double getBackingAmountNeeded() {
+		return backingAmountNeeded;
+	}
+
+	public void setBackingAmountNeeded(double backingAmountNeeded) {
+		this.backingAmountNeeded = backingAmountNeeded;
+	}
+
+	public double getBattingAmountNeeded() {
+		return battingAmountNeeded;
+	}
+
+	public void setBattingAmountNeeded(double battingAmountNeeded) {
+		this.battingAmountNeeded = battingAmountNeeded;
+	}
+
+	public double getDiscountAmount() {
+		return discountAmount;
+	}
+
+	public void setDiscountAmount(double discountAmount) {
+		this.discountAmount = discountAmount;
+	}
+
+	public double getTaxAmount() {
+		return taxAmount;
+	}
+
+	public void setTaxAmount(double taxAmount) {
+		this.taxAmount = taxAmount;
+	}
+
+	public double getDownpayment() {
+		return downpayment;
+	}
+
+	public void setDownpayment(double downpayment) {
+		this.downpayment = downpayment;
+	}
+
+	public double getTip() {
+		return tip;
+	}
+
+	public void setTip(double tip) {
+		this.tip = tip;
 	}
 	
+
 	
 	
 }
