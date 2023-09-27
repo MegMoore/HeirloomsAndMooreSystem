@@ -220,7 +220,7 @@ public class QuiltsController {
 	        
 	      //Points tracker
 	       //***********************working on point calculator*************************
-			if(qui.getQuiltingCost() > 0) {
+			if(qui.getQuiltingCost() + qui.getPantographCost() > 0) {
 				qui.getClient().setPoints(qui.getClient().getPoints() + (qui.getQuiltingCost() + qui.getPantographCost()));
 			}
 	        
