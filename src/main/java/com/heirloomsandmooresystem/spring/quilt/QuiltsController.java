@@ -120,17 +120,18 @@ public class QuiltsController {
 	        	qui.setPantographCost(qui.getArea() * qui.getPantographPrice());
 	        	if(qui.getPantographCost() < 60) {
 	        		qui.setPantographCost(60);
-	        	qui.setSubTotal(qui.getSubTotal() + qui.getPantographCost());
 	        	}
+	        	qui.setSubTotal(qui.getSubTotal() + qui.getPantographCost());
 	        }
 	        //Quilting
 	        if(qui.getArea() > 0 && qui.getQuiltingPrice() > 0) {	
-	        	qui.setQuiltingCost(qui.getArea() * qui.getQuiltingPrice());
+	        	qui.setQuiltingCost(qui.getArea() * qui.getQuiltingPrice()); {
 	        	if(qui.getQuiltingCost() < 60) {
-	        		qui.setQuiltingCost(60);
+	        			qui.setQuiltingCost(60);		
+	        		}	        	
 	        	qui.setSubTotal(qui.getSubTotal() + qui.getQuiltingCost());
 	        	}
-	        }
+	        
 	        //Parimeter
 	        if(qui.getWidth() > 0 && qui.getLength() > 0) {
 	        	qui.setParimeter((qui.getWidth() * 2) + (qui.getLength() * 2));
@@ -220,15 +221,15 @@ public class QuiltsController {
 	      //Points tracker
 	       //***********************working on point calculator*************************
 			if(qui.getQuiltingCost() > 0) {
-				qui.getClient().setPoints(qui.getQuiltingCost());
+				qui.getClient().setPoints(qui.getClient().getPoints() + (qui.getQuiltingCost() + qui.getPantographCost()));
 			}
 	        
-			return qui;
 				
-	}
+	        }
 		
-		
-		
-		
+	        return qui;
+		}	
+			
+}	
 	
-}
+
